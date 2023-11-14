@@ -216,7 +216,9 @@ public class HomeController {
         return "calc20";
     }
     @GetMapping("/calc21")
-    String showCalc21(Model model) {
+    String showCalc21(Model model) { //빈칸을 채우고 싶으면 model에 넣어라
+        model.addAttribute("v1", "안녕");
+        model.addAttribute("v2", "반가워");
         return "calc21";
     }
 }
