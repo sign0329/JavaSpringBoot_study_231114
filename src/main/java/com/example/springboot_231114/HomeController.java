@@ -224,6 +224,15 @@ public class HomeController {
         model.addAttribute("v2", "반가워");
         return "calc21";
     }
+
+        private static int counter = 0;
+
+        @GetMapping("/calc22")
+        @ResponseBody
+        public int showCalc22() {
+            counter++;
+            return counter;
+        }
 }
 
 
