@@ -3,6 +3,7 @@ package com.example.springboot_231114;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -136,9 +137,89 @@ public class HomeController {
         }};
         return person2;
     }
+    @GetMapping("/calc14")
+    @ResponseBody
+    String showCalc14() {
+        String html ="";
 
+        html += "<div>";
+        html += "<input type=\"text\" placeholder= \"내용\"> ";
+        html += "</div>";
+
+        return html;
+    }
+
+    @GetMapping("/calc15")
+    @ResponseBody
+    String showCalc15() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("<div>");
+        sb.append( "<input type=\"text\" placeholder= \"내용\"> ");
+        sb.append("</div>");
+        return sb.toString();
+    }
+
+
+    @GetMapping("/calc16")
+    @ResponseBody
+    String showCalc16() {
+        String html = "<div> <input type=\"text\" placeholder= \"내용\">  </div>";
+
+
+        return html;
+    }
+
+    @GetMapping("/calc17")
+    @ResponseBody
+    String showCalc17() {
+        String html = """
+                <div>
+                    <input type="text" placeholder="내용">
+                </div>
+                """;
+
+        return html;
+    }
+
+    @GetMapping("/calc18")
+    @ResponseBody
+    String showCalc18() {
+        String html = """
+                <div>
+                    <input type="text" placeholder="내용" value="반가워요.">
+                </div>
+                """;
+
+        return html;
+    }
+
+    @GetMapping("/calc19")
+    @ResponseBody
+    String showCalc19(@RequestParam(defaultValue = "") String content) {
+        String html = """
+            
+                <div> 
+                    <input type=\"text\" placeholder= "제목" value="%d">
+                 </div>
+                 
+                   <div> 
+                    <input type=\"text\" placeholder= "내용" value="%s">
+                 </div>
+                 
+                """.formatted(content);
+        return html;
+    }
+
+    @GetMapping("/calc20")
+    String showCalc20() {
+        return "calc20";
+    }
+    @GetMapping("/calc21")
+    String showCalc21(Model model) {
+        return "calc21";
+    }
 }
-
 
     @AllArgsConstructor
     class Person {
