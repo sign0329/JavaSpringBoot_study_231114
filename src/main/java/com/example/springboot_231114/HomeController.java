@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -70,6 +72,15 @@ public class HomeController {
         return a + b;
     }
 
+
+    @GetMapping("/calc7")
+    @ResponseBody
+    boolean showCalc7(
+            int a, int b
+    ) {
+        return a > b;
+    }
+
     @GetMapping("/calc8")
     @ResponseBody
     Person showCalc8(
@@ -94,44 +105,37 @@ public class HomeController {
         return personMap;
     }
 
-//    @GetMapping("/calc11")
-//    @ResponseBody
-//    List<Person2> showCalc11(
-//            String name, int age) {
-//       List<Person2> persons = new ArrayList<>(){{
-//         add(10);
-//         add(123);
-//         add(1234567);
-//       }}
-//
-//        return List<Person2>
-//    }
+    @GetMapping("/calc11")
+    @ResponseBody
+    List<Integer> showCalc11() {
+       List<Integer> nums = new ArrayList<>(){{
+         add(10);
+         add(123);
+         add(1234567);
+       }};
 
-//    @GetMapping("/calc12")
-//    @ResponseBody
-//    List<Person2> showCalc12(
-//            String name, int age) {
-//        List<Person2> nums = new ArrayList<>(){{
-//            add(10);
-//            add(123);
-//            add(1234567);
-//        }}
-//        return nums;
-//    }
-//    @GetMapping("/calc12")
-//    @ResponseBody
-//    int[] showCalc12(
-//            String name, int age) {
-//
-//        return ;
-//    }
-//
-//    @GetMapping("/calc13")
-//    @ResponseBody
-//    List<Person2> showCalc1()
-//
-//        return List<Person2>
-//    }
+        return nums;
+    }
+
+    @GetMapping("/calc12")
+    @ResponseBody
+    int[] showCalc12() {
+        int[] nums = new int[] {10, 123, 1234567};
+
+        return nums;
+    }
+    @GetMapping("/calc13")
+    @ResponseBody
+    List<Person2> showCalc13(
+            String name, int age) {
+        List<Person2> person2 = new ArrayList<>(){{
+           add(new Person2(name, age));
+           add(new Person2(name + "!", age + 1));
+           add(new Person2(name + "!!", age + 2));
+
+        }};
+        return person2;
+    }
 
 }
 
