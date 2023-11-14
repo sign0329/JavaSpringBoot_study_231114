@@ -1,2 +1,33 @@
-package com.example.springboot_231114;public class HomeController {
+package com.example.springboot_231114;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class HomeController {
+
+    @GetMapping("/")
+    @ResponseBody // 이 함수의 리턴값을 그대로 브라우저에 출력하라는 의미.
+    String showMain(){
+        return "안녕하세요";
+    }
+
+    @GetMapping("/about")
+    @ResponseBody
+    String showAbout(){ return "개발자 커뮤니티";
+    }
+
+    @GetMapping("/calc")
+    @ResponseBody
+    String showCalc(int a, int b) {
+
+        return "계산기: %d".formatted(a + b);
+    }
+    @GetMapping("/calc2")
+    @ResponseBody
+    String showCalc2(Integer a, Integer b) {
+
+        return "a:" + a + ", b:" + b;
+    }
 }
