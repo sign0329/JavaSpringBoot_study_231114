@@ -196,32 +196,36 @@ public class HomeController {
 
     @GetMapping("/calc19")
     @ResponseBody
-    String showCalc19(@RequestParam(defaultValue = "") String content) {
+    String showCalc19(
+            @RequestParam(defaultValue = "") String subject,
+            @RequestParam(defaultValue = "") String content
+    ) {
         String html = """
-            
-                <div> 
-                    <input type=\"text\" placeholder= "제목" value="%d">
-                 </div>
-                 
-                   <div> 
-                    <input type=\"text\" placeholder= "내용" value="%s">
-                 </div>
-                 
-                """.formatted(content);
+                <div>
+                    <input type="text" placeholder="제목" value="%s">
+                </div>
+                <div>
+                    <input type="text" placeholder="내용" value="%s">
+                </div>
+                """.formatted(subject, content);
+
         return html;
     }
+
 
     @GetMapping("/calc20")
     String showCalc20() {
         return "calc20";
     }
+
     @GetMapping("/calc21")
-    String showCalc21(Model model) { //빈칸을 채우고 싶으면 model에 넣어라
+    String showCalc21(Model model) {
         model.addAttribute("v1", "안녕");
         model.addAttribute("v2", "반가워");
         return "calc21";
     }
 }
+
 
     @AllArgsConstructor
     class Person {
